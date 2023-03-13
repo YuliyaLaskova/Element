@@ -93,10 +93,6 @@ struct OnboardingSplashScreen: View {
     /// The main action buttons.
     var buttons: some View {
         VStack(spacing: 0) {
-//            Button { viewModel.send(viewAction: .register) } label: {
-//                Text(VectorL10n.onboardingSplashRegisterButtonTitle)
-//            }
-//            .buttonStyle(PrimaryActionButtonStyle())
             
             Button { viewModel.send(viewAction: .login) } label: {
                 Text("Войти")
