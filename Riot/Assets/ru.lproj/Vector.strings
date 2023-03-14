@@ -1988,7 +1988,7 @@
 "authentication_verify_email_input_title" = "Введите электронную почту";
 "authentication_login_forgot_password" = "Забыл(а) пароль";
 "authentication_login_username" = "Имя пользователя / электронная почта / телефон";
-"authentication_login_title" = "С возвращением!";
+"authentication_login_title" = "Вход в систему защищенных сообщений NF";
 "authentication_registration_password_footer" = "Не менее 8 символов";
 "authentication_registration_username_footer" = "Вы не сможете изменить это позже";
 "authentication_registration_username" = "Имя пользователя";
@@ -2116,6 +2116,7 @@
 "onboarding_splash_page_2_title" = "У вас всё под контролем.";
 "onboarding_splash_page_1_message" = "Безопасное и независимое общение, обеспечивающее такой же уровень конфиденциальности, как и при личном разговоре у вас дома.";
 "onboarding_splash_page_1_title" = "Будьте хозяином своих переписок.";
+"onboarding_splash_main-page_title" = "NF Secure IM защищенный корпоративный коммуникационный сервис от компании CVA technologies";
 "onboarding_splash_login_button_title" = "У меня уже есть аккаунт";
 "confirm" = "Подтвердить";
 "onboarding_celebration_title" = "Выглядит хорошо!";

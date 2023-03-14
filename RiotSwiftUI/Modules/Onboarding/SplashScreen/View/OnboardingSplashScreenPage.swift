@@ -38,6 +38,7 @@ struct OnboardingSplashScreenPage: View {
                 .frame(maxWidth: 310) // This value is problematic. 300 results in dropped frames
                 // on iPhone 12/13 Mini. 305 the same on iPhone 12/13. As of
                 // iOS 15, 310 seems fine on all supported screen widths 🤞.
+                .clipShape(Circle())
                 .padding(20)
                 .accessibilityHidden(true)
             
@@ -61,8 +62,6 @@ struct OnboardingSplashScreenPage: View {
 struct OnboardingSplashScreenPage_Previews: PreviewProvider {
     static let content = OnboardingSplashScreenViewState().content
     static var previews: some View {
-        ForEach(0..<content.count, id: \.self) { index in
-            OnboardingSplashScreenPage(content: content[index])
-        }
+            OnboardingSplashScreenPage(content: content)
     }
 }

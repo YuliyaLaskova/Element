@@ -63,7 +63,7 @@ final class OnboardingSplashScreenCoordinator: OnboardingSplashScreenCoordinator
                 self.startLoading()
                 self.completion?(result)
             case .register:
-                self.completion?(result)
+                print("hfhfh")
             }
         }
     }

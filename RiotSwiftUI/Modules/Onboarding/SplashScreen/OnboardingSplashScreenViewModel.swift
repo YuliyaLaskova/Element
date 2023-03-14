@@ -43,25 +43,10 @@ class OnboardingSplashScreenViewModel: OnboardingSplashScreenViewModelType, Onbo
 
     override func process(viewAction: OnboardingSplashScreenViewAction) {
         switch viewAction {
-//        case .register:
-//            register()
         case .login:
             login()
-        case .nextPage:
-            // Wrap back round to the first page index when reaching the end.
-            state.bindings.pageIndex = (state.bindings.pageIndex + 1) % state.content.count
-        case .previousPage:
-            // Prevent the hidden page at index -1 from being shown.
-            state.bindings.pageIndex = max(0, state.bindings.pageIndex - 1)
-        case .hiddenPage:
-            // Hidden page for a nicer animation when looping back to the start.
-            state.bindings.pageIndex = -1
         }
     }
-
-//    private func register() {
-//        completion?(.register)
-//    }
 
     private func login() {
         completion?(.login)

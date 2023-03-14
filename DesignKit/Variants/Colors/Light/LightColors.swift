@@ -33,7 +33,7 @@ public class LightColors {
         system: UIColor(rgb:0xF4F6FA),
         tile: UIColor(rgb:0xF3F8FD),
         navigation: UIColor(rgb:0xF4F6FA),
-        background: UIColor(rgb:0xFFFFFF),
+        background: UIColor(rgb:0x100EB4),
         ems: UIColor(rgb: 0x7E69FF),
         links: UIColor(rgb: 0x0086E6),
         namesAndAvatars: [

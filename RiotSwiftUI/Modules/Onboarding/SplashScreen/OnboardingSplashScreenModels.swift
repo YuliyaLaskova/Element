@@ -37,66 +37,52 @@ enum OnboardingSplashScreenViewModelResult {
 
 struct OnboardingSplashScreenViewState: BindableState, CustomDebugStringConvertible {
     /// The colours of the background gradient shown behind the 4 pages.
-    private let gradientColors = [
-        Color.blue,
-        Color.blue
-//        Color(red: 0.89, green: 0.96, blue: 0.97),
+//    private let gradientColors = [
+//        Color(red: 0.063, green: 0.059, blue: 0.702),
+//        Color(red: 0.063, green: 0.059, blue: 0.702),
+//        Color("mainBlue")
+        //        Color(red: 0.89, green: 0.96, blue: 0.97),
 //        Color(red: 0.95, green: 0.89, blue: 0.97),
 //        Color(red: 0.81, green: 0.95, blue: 0.91),
 //        Color(red: 0.95, green: 0.98, blue: 0.96)
-    ]
+//    ]
     
     /// An array containing all content of the carousel pages
-    let content: [OnboardingSplashScreenPageContent]
+    let content: OnboardingSplashScreenPageContent
     var bindings: OnboardingSplashScreenBindings
     
     /// Custom debug description to reduce noise in the logs.
     var debugDescription: String {
-        "OnboardingSplashScreenViewState at page \(bindings.pageIndex)."
+        "OnboardingSplashScreenViewState at main page ."
     }
     
     /// The background gradient for all 4 pages and the hidden page at the start of the carousel.
-    var backgroundGradient: Gradient {
-        // Include the extra stop for the hidden page at the start of the carousel.
-        let hiddenPageColor = gradientColors[gradientColors.count - 2]
-        return Gradient(colors: [hiddenPageColor] + gradientColors)
-    }
+    var background: Color {
+//        Color("mainBlue")
+        return Color(red: 0.063, green: 0.059, blue: 0.706)    }
     
     init() {
         // The pun doesn't translate, so we only use it for English.
         let locale = Locale.current
         let page4Title = locale.identifier.hasPrefix("en") ? "Cut the slack from teams." : VectorL10n.onboardingSplashPage4TitleNoPun
         
-        content = [
-            OnboardingSplashScreenPageContent(title: "CVA technologies",
-                                              message: "Защищенный корпоративный коммуникационный сервис от компании CVA technologies",
+        content =
+            OnboardingSplashScreenPageContent(title: "",
+                                              message: "NF Secure IM защищенный корпоративный коммуникационный сервис от компании CVA technologies",
                                               image: Asset.Images.logoCvaTechnologies,
-                                              darkImage: Asset.Images.logoCvaTechnologies),
+                                              darkImage: Asset.Images.logoCvaTechnologies)
 //            OnboardingSplashScreenPageContent(title: VectorL10n.onboardingSplashPage2Title,
 //                                              message: VectorL10n.onboardingSplashPage2Message,
 //                                              image: Asset.Images.onboardingSplashScreenPage2,
 //                                              darkImage: Asset.Images.onboardingSplashScreenPage2Dark),
-//            OnboardingSplashScreenPageContent(title: VectorL10n.onboardingSplashPage3Title,
-//                                              message: VectorL10n.onboardingSplashPage3Message,
-//                                              image: Asset.Images.onboardingSplashScreenPage3,
-//                                              darkImage: Asset.Images.onboardingSplashScreenPage3Dark),
-//            OnboardingSplashScreenPageContent(title: page4Title,
-//                                              message: VectorL10n.onboardingSplashPage4Message,
-//                                              image: Asset.Images.onboardingSplashScreenPage4,
-//                                              darkImage: Asset.Images.onboardingSplashScreenPage4Dark)
-        ]
+        
         bindings = OnboardingSplashScreenBindings()
     }
 }
 
 struct OnboardingSplashScreenBindings {
-    var pageIndex = 0
 }
 
 enum OnboardingSplashScreenViewAction {
-//    case register
     case login
-    case nextPage
-    case previousPage
-    case hiddenPage
 }
