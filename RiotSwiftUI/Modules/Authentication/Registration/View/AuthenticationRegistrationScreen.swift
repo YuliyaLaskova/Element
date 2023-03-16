@@ -26,7 +26,8 @@ struct AuthenticationRegistrationScreen: View {
     @State private var isPasswordFocused = false
     
     // MARK: Public
-    
+    // julia убраны кнопки SSO провайдеров
+
     @ObservedObject var viewModel: AuthenticationRegistrationViewModel.Context
     
     var body: some View {
@@ -48,21 +49,21 @@ struct AuthenticationRegistrationScreen: View {
                 if viewModel.viewState.homeserver.showRegistrationForm {
                     registrationForm
                 }
+//
+//                if viewModel.viewState.homeserver.showRegistrationForm, viewModel.viewState.showSSOButtons {
+//                    Text(VectorL10n.or)
+//                        .foregroundColor(theme.colors.secondaryContent)
+//                        .padding(.top, 16)
+//                }
                 
-                if viewModel.viewState.homeserver.showRegistrationForm, viewModel.viewState.showSSOButtons {
-                    Text(VectorL10n.or)
-                        .foregroundColor(theme.colors.secondaryContent)
-                        .padding(.top, 16)
-                }
-                
-                if viewModel.viewState.showSSOButtons {
-                    ssoButtons
-                        .padding(.top, 16)
-                }
-
-                if !viewModel.viewState.homeserver.showRegistrationForm, !viewModel.viewState.showSSOButtons {
-                    fallbackButton
-                }
+//                if viewModel.viewState.showSSOButtons {
+//                    ssoButtons
+//                        .padding(.top, 16)
+//                }
+//
+//                if !viewModel.viewState.homeserver.showRegistrationForm, !viewModel.viewState.showSSOButtons {
+//                    fallbackButton
+//                }
             }
             .readableFrame()
             .padding(.horizontal, 16)
@@ -125,22 +126,11 @@ struct AuthenticationRegistrationScreen: View {
             
             Button(action: submit) {
                 Text(VectorL10n.next)
+                    .foregroundColor(.white)
             }
             .buttonStyle(PrimaryActionButtonStyle())
             .disabled(!viewModel.viewState.canSubmit)
             .accessibilityIdentifier("nextButton")
-        }
-    }
-    
-    /// A list of SSO buttons that can be used for login.
-    var ssoButtons: some View {
-        VStack(spacing: 16) {
-            ForEach(viewModel.viewState.homeserver.ssoIdentityProviders) { provider in
-                AuthenticationSSOButton(provider: provider) {
-                    viewModel.send(viewAction: .continueWithSSO(provider))
-                }
-                .accessibilityIdentifier("ssoButton")
-            }
         }
     }
 

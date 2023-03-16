@@ -18,6 +18,7 @@ import Foundation
 
 // MARK: View model
 
+// julia убран функционал SSO провайдеров
 enum AuthenticationLoginViewModelResult: CustomStringConvertible {
     /// The user would like to select another server.
     case selectServer
@@ -27,8 +28,6 @@ enum AuthenticationLoginViewModelResult: CustomStringConvertible {
     case forgotPassword
     /// Login using the supplied credentials.
     case login(username: String, password: String)
-    /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
     /// Continue using the fallback page
     case fallback
     /// Continue with QR login
@@ -45,8 +44,6 @@ enum AuthenticationLoginViewModelResult: CustomStringConvertible {
             return "forgotPassword"
         case .login:
             return "login"
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
         case .fallback:
             return "fallback"
         case .qrLogin:
@@ -64,11 +61,6 @@ struct AuthenticationLoginViewState: BindableState {
     var isLoading = false
     /// View state that can be bound to from SwiftUI.
     var bindings: AuthenticationLoginBindings
-    
-    /// Whether to show any SSO buttons.
-    var showSSOButtons: Bool {
-        !homeserver.ssoIdentityProviders.isEmpty
-    }
     
     /// `true` if the username and password are ready to be submitted.
     var hasValidCredentials: Bool {
@@ -101,8 +93,6 @@ enum AuthenticationLoginViewAction {
     case next
     /// Continue using the fallback page
     case fallback
-    /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
     /// Continue using QR login
     case qrLogin
 }

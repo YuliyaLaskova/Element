@@ -22,20 +22,21 @@ import SwiftUI
 /// Light theme colors.
 public class LightColors {
     private static let values = ColorValues(
-        accent: UIColor(rgb:0x0DBD8B),
-        alert: UIColor(rgb:0xFF4B55),
-        primaryContent: UIColor(rgb:0x17191C),
-        secondaryContent: UIColor(rgb:0x737D8C),
-        tertiaryContent: UIColor(rgb:0x8D97A5),
-        quarterlyContent: UIColor(rgb:0xC1C6CD),
-        quinaryContent: UIColor(rgb:0xE3E8F0),
-        separator: UIColor(rgb:0xE3E8F0),
-        system: UIColor(rgb:0xF4F6FA),
-        tile: UIColor(rgb:0xF3F8FD),
-        navigation: UIColor(rgb:0xF4F6FA),
-        background: UIColor(rgb:0x100EB4),
-        ems: UIColor(rgb: 0x7E69FF),
-        links: UIColor(rgb: 0x0086E6),
+//        accent: UIColor(rgb:0x0DBD8B)
+        accent: UIColor(.blue),
+        alert: UIColor(rgb:0xFF4B55), //lightred
+        primaryContent: UIColor(.white), //white
+        secondaryContent: UIColor(rgb:0x737D8C), //lightgray
+        tertiaryContent: UIColor(rgb:0x8D97A5), //darkgray
+        quarterlyContent: UIColor(rgb:0xC1C6CD), //palegray
+        quinaryContent: UIColor(rgb:0xE3E8F0), //almostwhitegray
+        separator: UIColor(rgb:0xE3E8F0), // paleblue
+        system: UIColor(.white),
+        tile: UIColor(rgb:0xF3F8FD), //almostwhiteblue
+        navigation: UIColor(rgb:0xF4F6FA), //almostwhiteblue
+        background: UIColor(rgb:0x100EB4), //corporateblue
+        ems: UIColor(rgb: 0x7E69FF), //lightpurple
+        links: UIColor(rgb: 0x0086E6), //brightlightblue
         namesAndAvatars: [
             UIColor(rgb:0x368BD6),
             UIColor(rgb:0xAC3BA8),
@@ -51,8 +52,4 @@ public class LightColors {
     public static var uiKit = ColorsUIKit(values: values)
     public static var swiftUI = ColorSwiftUI(values: values)
 }
-
-
-
-
-
+// julia замена некоторых цветов гаммы

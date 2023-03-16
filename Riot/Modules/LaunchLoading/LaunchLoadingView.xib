@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KG-IR-FPV" customClass="ElementView" customModule="Element" customModuleProvider="target">
+                <view contentMode="scaleAspectFit" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KG-IR-FPV" customClass="ElementView" customModule="Element" customModuleProvider="target">
                     <rect key="frame" x="95" y="219" width="130" height="130"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>

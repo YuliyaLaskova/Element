@@ -29,7 +29,7 @@ struct AuthenticationRegistrationCoordinatorParameters {
 
 enum AuthenticationRegistrationCoordinatorResult: CustomStringConvertible {
     /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
+//    case continueWithSSO(SSOIdentityProvider)
     /// The screen completed with the associated registration result.
     case completed(result: RegistrationResult, password: String)
     /// Continue using the fallback
@@ -38,8 +38,8 @@ enum AuthenticationRegistrationCoordinatorResult: CustomStringConvertible {
     /// A string representation of the result, ignoring any associated values that could leak PII.
     var description: String {
         switch self {
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
+//        case .continueWithSSO(let provider):
+//            return "continueWithSSO: \(provider)"
         case .completed:
             return "completed"
         case .fallback:
@@ -121,8 +121,8 @@ final class AuthenticationRegistrationCoordinator: Coordinator, Presentable {
                 self.validateUsername(username)
             case .createAccount(let username, let password):
                 self.createAccount(username: username, password: password)
-            case .continueWithSSO(let provider):
-                self.callback?(.continueWithSSO(provider))
+//            case .continueWithSSO(let provider):
+//                self.callback?(.continueWithSSO(provider))
             case .fallback:
                 self.callback?(.fallback)
             }

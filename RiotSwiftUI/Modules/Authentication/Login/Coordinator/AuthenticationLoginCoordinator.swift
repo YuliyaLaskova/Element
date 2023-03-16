@@ -25,9 +25,9 @@ struct AuthenticationLoginCoordinatorParameters {
     let loginMode: LoginMode
 }
 
+// julia убран функционал SSO провайдеров
+
 enum AuthenticationLoginCoordinatorResult: CustomStringConvertible {
-    /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
     /// Login was successful with the associated session created.
     case success(session: MXSession, password: String)
     /// Login was successful with the associated session created.
@@ -38,8 +38,6 @@ enum AuthenticationLoginCoordinatorResult: CustomStringConvertible {
     /// A string representation of the result, ignoring any associated values that could leak PII.
     var description: String {
         switch self {
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
         case .success:
             return "success"
         case .loggedInWithQRCode:
@@ -126,8 +124,6 @@ final class AuthenticationLoginCoordinator: Coordinator, Presentable {
                 self.showForgotPasswordScreen()
             case .login(let username, let password):
                 self.login(username: username, password: password)
-            case .continueWithSSO(let identityProvider):
-                self.callback?(.continueWithSSO(identityProvider))
             case .fallback:
                 self.callback?(.fallback)
             case .qrLogin:

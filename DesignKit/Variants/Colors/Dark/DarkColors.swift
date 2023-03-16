@@ -21,18 +21,18 @@ import SwiftUI
 /// Dark theme colors.
 public class DarkColors {
     private static let values = ColorValues(
-        accent: UIColor(rgb:0x0DBD8B),
+        accent: UIColor(rgb:0x100EB4),
         alert: UIColor(rgb:0xFF4B55),
-        primaryContent: UIColor(rgb:0xFFFFFF),
-        secondaryContent: UIColor(rgb:0xA9B2BC),
+        primaryContent: UIColor(rgb:0xFFFFFF), //white
+        secondaryContent: UIColor(rgb:0xA9B2BC), //gray
         tertiaryContent: UIColor(rgb:0x8E99A4),
         quarterlyContent: UIColor(rgb:0x6F7882),
         quinaryContent: UIColor(rgb:0x394049),
-        separator: UIColor(rgb:0x21262C),
-        system: UIColor(rgb:0x21262C),
+        separator: UIColor(rgb:0x21262C), //almostblack
+        system: UIColor(rgb:0x100EB4), //corporateblue
         tile: UIColor(rgb:0x394049),
         navigation: UIColor(rgb:0x21262C),
-        background: UIColor(rgb:0x15191E),
+        background: UIColor(rgb:0x041331),
         ems: UIColor(rgb: 0x7E69FF),
         links: UIColor(rgb: 0x0086E6),
         namesAndAvatars: [
@@ -50,3 +50,5 @@ public class DarkColors {
     public static var uiKit = ColorsUIKit(values: values)
     public static var swiftUI = ColorSwiftUI(values: values)
 }
+
+// julia замена некоторых цветов гаммы

@@ -51,8 +51,8 @@ class AuthenticationSoftLogoutViewModel: AuthenticationSoftLogoutViewModelType, 
             Task { await callback?(.forgotPassword) }
         case .clearAllData:
             Task { await callback?(.clearAllData) }
-        case .continueWithSSO(let provider):
-            Task { await callback?(.continueWithSSO(provider)) }
+//        case .continueWithSSO(let provider):
+//            Task { await callback?(.continueWithSSO(provider)) }
         case .fallback:
             Task { await callback?(.fallback) }
         }

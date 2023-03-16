@@ -28,23 +28,22 @@ struct AuthenticationSoftLogoutScreen: View {
     @ObservedObject var viewModel: AuthenticationSoftLogoutViewModel.Context
     
     // MARK: Views
-    
+   
+    // julia убраны кнопки SSO провайдеров
     var body: some View {
         ScrollView {
             VStack(spacing: 36) {
                 header
-                if viewModel.viewState.showLoginForm {
+//                if viewModel.viewState.showLoginForm {
                     loginForm
-                } else if !viewModel.viewState.showSSOButtons {
-                    fallbackButton
-                }
+//                }
                 clearDataForm
-                if viewModel.viewState.showSSOButtons {
-                    Text(VectorL10n.or)
-                        .foregroundColor(theme.colors.secondaryContent)
-                        .accessibilityIdentifier("orLabel")
-                    ssoButtons
-                }
+//                if viewModel.viewState.showSSOButtons {
+//                    Text(VectorL10n.or)
+//                        .foregroundColor(theme.colors.secondaryContent)
+//                        .accessibilityIdentifier("orLabel")
+//                    ssoButtons
+//                }
             }
             .readableFrame()
             .padding(.top, OnboardingMetrics.topPaddingToNavigationBar)
@@ -52,7 +51,7 @@ struct AuthenticationSoftLogoutScreen: View {
         }
         .background(theme.colors.background.ignoresSafeArea())
         .alert(item: $viewModel.alertInfo) { $0.alert }
-        .accentColor(theme.colors.accent)
+        .accentColor(.white)
     }
 
     /// The title, message and icon at the top of the screen.
@@ -92,6 +91,7 @@ struct AuthenticationSoftLogoutScreen: View {
             Button(action: forgotPassword) {
                 Text(VectorL10n.authenticationLoginForgotPassword)
                     .font(theme.fonts.body)
+                    .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.bottom, 8)
@@ -156,16 +156,16 @@ struct AuthenticationSoftLogoutScreen: View {
     }
 
     /// A list of SSO buttons that can be used for login.
-    var ssoButtons: some View {
-        VStack(spacing: 16) {
-            ForEach(viewModel.viewState.homeserver.ssoIdentityProviders) { provider in
-                AuthenticationSSOButton(provider: provider) {
-                    viewModel.send(viewAction: .continueWithSSO(provider))
-                }
-                .accessibilityIdentifier("ssoButton")
-            }
-        }
-    }
+//    var ssoButtons: some View {
+//        VStack(spacing: 16) {
+//            ForEach(viewModel.viewState.homeserver.ssoIdentityProviders) { provider in
+//                AuthenticationSSOButton(provider: provider) {
+//                    viewModel.send(viewAction: .continueWithSSO(provider))
+//                }
+//                .accessibilityIdentifier("ssoButton")
+//            }
+//        }
+//    }
 
     /// Sends the `login` view action so long as a valid email address has been input.
     func login() {

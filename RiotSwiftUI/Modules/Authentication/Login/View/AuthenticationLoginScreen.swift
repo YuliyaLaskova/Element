@@ -28,7 +28,8 @@ struct AuthenticationLoginScreen: View {
     @State private var isPasswordFocused = false
     
     // MARK: Public
-    
+    // julia редизайн экрана авторизации
+
     @ObservedObject var viewModel: AuthenticationLoginViewModel.Context
     
     var body: some View {
@@ -54,21 +55,6 @@ struct AuthenticationLoginScreen: View {
                 if viewModel.viewState.homeserver.showQRLogin {
                     qrLoginButton
                 }
-                
-                if viewModel.viewState.homeserver.showLoginForm, viewModel.viewState.showSSOButtons {
-                    Text(VectorL10n.or)
-                        .foregroundColor(theme.colors.secondaryContent)
-                        .padding(.top, 16)
-                }
-                
-                if viewModel.viewState.showSSOButtons {
-                    ssoButtons
-                        .padding(.top, 16)
-                }
-
-                if !viewModel.viewState.homeserver.showLoginForm, !viewModel.viewState.showSSOButtons {
-                    fallbackButton
-                }
             }
             .readableFrame()
             .padding(.horizontal, 16)
@@ -84,7 +70,7 @@ struct AuthenticationLoginScreen: View {
         Text(VectorL10n.authenticationLoginTitle)
             .font(theme.fonts.title2B)
             .multilineTextAlignment(.center)
-            .foregroundColor(theme.colors.primaryContent)
+            .foregroundColor(theme.colors.system)
     }
     
     /// The sever information section that includes a button to select a different server.
@@ -98,7 +84,7 @@ struct AuthenticationLoginScreen: View {
     /// The form with text fields for username and password, along with a submit button.
     var loginForm: some View {
         VStack(spacing: 14) {
-            RoundedBorderTextField(placeHolder: VectorL10n.authenticationLoginUsername,
+            RoundedBorderTextField(placeHolder: VectorL10n.authenticationRegistrationUsername,
                                    text: $viewModel.username,
                                    isFirstResponder: false,
                                    configuration: UIKitTextInputConfiguration(returnKeyType: .next,
@@ -121,6 +107,7 @@ struct AuthenticationLoginScreen: View {
             Button { viewModel.send(viewAction: .forgotPassword) } label: {
                 Text(VectorL10n.authenticationLoginForgotPassword)
                     .font(theme.fonts.body)
+                    .foregroundColor(theme.colors.primaryContent)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.bottom, 8)
@@ -142,18 +129,6 @@ struct AuthenticationLoginScreen: View {
         .buttonStyle(SecondaryActionButtonStyle(font: theme.fonts.bodySB))
         .padding(.vertical)
         .accessibilityIdentifier("qrLoginButton")
-    }
-    
-    /// A list of SSO buttons that can be used for login.
-    var ssoButtons: some View {
-        VStack(spacing: 16) {
-            ForEach(viewModel.viewState.homeserver.ssoIdentityProviders) { provider in
-                AuthenticationSSOButton(provider: provider) {
-                    viewModel.send(viewAction: .continueWithSSO(provider))
-                }
-                .accessibilityIdentifier("ssoButton")
-            }
-        }
     }
 
     /// A fallback button that can be used for login.

@@ -25,7 +25,7 @@ struct OnboardingSplashScreen: View {
     @Environment(\.theme) private var theme
     
     // MARK: Public
-    
+    // julia редизайн кнопки
     @ObservedObject var viewModel: OnboardingSplashScreenViewModel.Context
     
     var body: some View {
@@ -36,15 +36,15 @@ struct OnboardingSplashScreen: View {
                 OnboardingSplashScreenPage(content: viewModel.viewState.content)
                     .frame(width: geometry.size.width)
                 Spacer()
+                    .frame(height: 50)
                 Button { viewModel.send(viewAction: .login) } label: {
                     Text(VectorL10n.authLogin)
                         .font(theme.fonts.body)
-                        .padding(6)
                 }
-                .buttonStyle(PrimaryActionButtonStyle(customColor: Color.blue))
+                .buttonStyle(PrimaryActionButtonStyle())
+                .frame(height: 30)
                 .padding(.horizontal, 16)
                 Spacer()
-                    .frame(height: 50)
             }
             .frame(maxHeight: .infinity)
             .navigationBarHidden(true)

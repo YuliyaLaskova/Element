@@ -19,16 +19,13 @@ import Foundation
 /// The result returned when querying a homeserver's available login flows.
 struct LoginFlowResult {
     let supportedLoginTypes: [MXLoginFlow]
-    let ssoIdentityProviders: [SSOIdentityProvider]
     let homeserverAddress: String
     
+    
+    // julia убран функционал авторизации через SSO провайдеры
+    
     var loginMode: LoginMode {
-        if supportedLoginTypes.contains(where: { $0.type == kMXLoginFlowTypeSSO }),
-           supportedLoginTypes.contains(where: { $0.type == kMXLoginFlowTypePassword }) {
-            return .ssoAndPassword(ssoIdentityProviders: ssoIdentityProviders)
-        } else if supportedLoginTypes.contains(where: { $0.type == kMXLoginFlowTypeSSO }) {
-            return .sso(ssoIdentityProviders: ssoIdentityProviders)
-        } else if supportedLoginTypes.contains(where: { $0.type == kMXLoginFlowTypePassword }) {
+        if supportedLoginTypes.contains(where: { $0.type == kMXLoginFlowTypePassword }) {
             return .password
         } else {
             return .unsupported
@@ -42,38 +39,14 @@ enum LoginMode {
     case unknown
     /// The homeserver supports login with a password.
     case password
-    /// The homeserver supports login via one or more SSO providers.
-    case sso(ssoIdentityProviders: [SSOIdentityProvider])
-    /// The homeserver supports login with either a password or via an SSO provider.
-    case ssoAndPassword(ssoIdentityProviders: [SSOIdentityProvider])
     /// The homeserver only allows login with unsupported mechanisms. Use fallback instead.
     case unsupported
     
-    var ssoIdentityProviders: [SSOIdentityProvider]? {
-        switch self {
-        case .sso(let ssoIdentityProviders), .ssoAndPassword(let ssoIdentityProviders):
-            // Provide a backup for homeservers that support SSO but don't offer any identity providers
-            // https://spec.matrix.org/latest/client-server-api/#client-login-via-sso
-            return ssoIdentityProviders.count > 0 ? ssoIdentityProviders : [SSOIdentityProvider(id: "", name: "SSO", brand: nil, iconURL: nil)]
-        default:
-            return nil
-        }
-    }
-    
-    var hasSSO: Bool {
-        switch self {
-        case .sso, .ssoAndPassword:
-            return true
-        default:
-            return false
-        }
-    }
-    
     var supportsPasswordFlow: Bool {
         switch self {
-        case .password, .ssoAndPassword:
+        case .password:
             return true
-        case .unknown, .unsupported, .sso:
+        case .unknown, .unsupported:
             return false
         }
     }

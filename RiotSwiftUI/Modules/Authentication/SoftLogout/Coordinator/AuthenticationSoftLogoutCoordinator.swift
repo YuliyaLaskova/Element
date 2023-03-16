@@ -30,7 +30,7 @@ enum AuthenticationSoftLogoutCoordinatorResult: CustomStringConvertible {
     /// Clear all user data
     case clearAllData
     /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
+//    case continueWithSSO(SSOIdentityProvider)
     /// Continue using the fallback page
     case fallback
     
@@ -41,8 +41,8 @@ enum AuthenticationSoftLogoutCoordinatorResult: CustomStringConvertible {
             return "success"
         case .clearAllData:
             return "clearAllData"
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
+//        case .continueWithSSO(let provider):
+//            return "continueWithSSO: \(provider)"
         case .fallback:
             return "fallback"
         }
@@ -124,8 +124,8 @@ final class AuthenticationSoftLogoutCoordinator: Coordinator, Presentable {
                 self.showForgotPasswordScreen()
             case .clearAllData:
                 self.callback?(.clearAllData)
-            case .continueWithSSO(let provider):
-                self.callback?(.continueWithSSO(provider))
+//            case .continueWithSSO(let provider):
+//                self.callback?(.continueWithSSO(provider))
             case .fallback:
                 self.callback?(.fallback)
             }

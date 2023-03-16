@@ -70,8 +70,7 @@ struct AuthenticationState {
             AuthenticationHomeserverViewData(address: displayableAddress,
                                              showLoginForm: preferredLoginMode.supportsPasswordFlow,
                                              showRegistrationForm: registrationFlow != nil && !needsRegistrationFallback,
-                                             showQRLogin: supportsQRLogin,
-                                             ssoIdentityProviders: preferredLoginMode.ssoIdentityProviders ?? [])
+                                             showQRLogin: supportsQRLogin)
         }
 
         /// Needs authentication fallback for login

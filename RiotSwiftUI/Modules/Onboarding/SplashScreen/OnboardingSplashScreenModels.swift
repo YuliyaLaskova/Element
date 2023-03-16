@@ -34,18 +34,8 @@ enum OnboardingSplashScreenViewModelResult {
 }
 
 // MARK: View
-
+// julia редизайн главного экрана 
 struct OnboardingSplashScreenViewState: BindableState, CustomDebugStringConvertible {
-    /// The colours of the background gradient shown behind the 4 pages.
-//    private let gradientColors = [
-//        Color(red: 0.063, green: 0.059, blue: 0.702),
-//        Color(red: 0.063, green: 0.059, blue: 0.702),
-//        Color("mainBlue")
-        //        Color(red: 0.89, green: 0.96, blue: 0.97),
-//        Color(red: 0.95, green: 0.89, blue: 0.97),
-//        Color(red: 0.81, green: 0.95, blue: 0.91),
-//        Color(red: 0.95, green: 0.98, blue: 0.96)
-//    ]
     
     /// An array containing all content of the carousel pages
     let content: OnboardingSplashScreenPageContent
@@ -68,13 +58,9 @@ struct OnboardingSplashScreenViewState: BindableState, CustomDebugStringConverti
         
         content =
             OnboardingSplashScreenPageContent(title: "",
-                                              message: "NF Secure IM защищенный корпоративный коммуникационный сервис от компании CVA technologies",
+                                              message: VectorL10n.onboardingSplashPage1Title,
                                               image: Asset.Images.logoCvaTechnologies,
                                               darkImage: Asset.Images.logoCvaTechnologies)
-//            OnboardingSplashScreenPageContent(title: VectorL10n.onboardingSplashPage2Title,
-//                                              message: VectorL10n.onboardingSplashPage2Message,
-//                                              image: Asset.Images.onboardingSplashScreenPage2,
-//                                              darkImage: Asset.Images.onboardingSplashScreenPage2Dark),
         
         bindings = OnboardingSplashScreenBindings()
     }

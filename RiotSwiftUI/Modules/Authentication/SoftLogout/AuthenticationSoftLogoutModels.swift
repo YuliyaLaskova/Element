@@ -35,7 +35,7 @@ enum AuthenticationSoftLogoutViewModelResult: CustomStringConvertible {
     /// Clear all user data
     case clearAllData
     /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
+//    case continueWithSSO(SSOIdentityProvider)
     /// Continue using the fallback page
     case fallback
     
@@ -48,8 +48,8 @@ enum AuthenticationSoftLogoutViewModelResult: CustomStringConvertible {
             return "forgotPassword"
         case .clearAllData:
             return "clearAllData"
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
+//        case .continueWithSSO(let provider):
+//            return "continueWithSSO: \(provider)"
         case .fallback:
             return "fallback"
         }
@@ -77,9 +77,9 @@ struct AuthenticationSoftLogoutViewState: BindableState {
     }
 
     /// Whether to show any SSO buttons.
-    var showSSOButtons: Bool {
-        !homeserver.ssoIdentityProviders.isEmpty
-    }
+//    var showSSOButtons: Bool {
+//        !homeserver.ssoIdentityProviders.isEmpty
+//    }
 
     /// Whether to show recover encryption keys message
     var showRecoverEncryptionKeysMessage: Bool {
@@ -107,7 +107,7 @@ enum AuthenticationSoftLogoutViewAction {
     /// Clear all user data.
     case clearAllData
     /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
+//    case continueWithSSO(SSOIdentityProvider)
     /// Continue using the fallback page
     case fallback
 }

@@ -26,7 +26,6 @@ enum MockAuthenticationLoginScreenState: MockScreenState, CaseIterable {
     case matrixDotOrg
     case passwordOnly
     case passwordWithCredentials
-    case ssoOnly
     case fallback
 
     /// The associated screen
@@ -46,8 +45,6 @@ enum MockAuthenticationLoginScreenState: MockScreenState, CaseIterable {
             viewModel = AuthenticationLoginViewModel(homeserver: .mockBasicServer)
             viewModel.context.username = "alice"
             viewModel.context.password = "password"
-        case .ssoOnly:
-            viewModel = AuthenticationLoginViewModel(homeserver: .mockEnterpriseSSO)
         case .fallback:
             viewModel = AuthenticationLoginViewModel(homeserver: .mockFallback)
         }

@@ -58,10 +58,10 @@ final class LaunchLoadingView: UIView, NibLoadable, Themable {
     }
     
     // MARK: - Public
-    
+    //julia замена цветов на корпоративный
     func update(theme: Theme) {
-        self.backgroundColor = theme.backgroundColor
-        self.animationView.backgroundColor = theme.backgroundColor
+        self.backgroundColor = UIColor(rgb:0x100EB4)
+        self.animationView.backgroundColor = UIColor(rgb:0x100EB4)
     }
 }
 

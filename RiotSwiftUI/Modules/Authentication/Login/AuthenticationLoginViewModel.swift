@@ -48,8 +48,7 @@ class AuthenticationLoginViewModel: AuthenticationLoginViewModelType, Authentica
             Task { await callback?(.login(username: state.bindings.username, password: state.bindings.password)) }
         case .fallback:
             Task { await callback?(.fallback) }
-        case .continueWithSSO(let provider):
-            Task { await callback?(.continueWithSSO(provider)) }
+            // julia убран функционал SSO провайдеров
         case .qrLogin:
             Task { await callback?(.qrLogin) }
         }

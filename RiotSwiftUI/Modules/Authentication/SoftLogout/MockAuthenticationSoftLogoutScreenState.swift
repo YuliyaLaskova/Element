@@ -25,10 +25,10 @@ enum MockAuthenticationSoftLogoutScreenState: MockScreenState, CaseIterable {
     // mock that screen.
     case emptyPassword
     case enteredPassword
-    case ssoOnly
-    case noSSO
-    case fallback
-    case noKeyBackup
+//    case ssoOnly
+//    case noSSO
+//    case fallback
+//    case noKeyBackup
     
     /// The associated screen
     var screenType: Any.Type {
@@ -52,22 +52,22 @@ enum MockAuthenticationSoftLogoutScreenState: MockScreenState, CaseIterable {
                                                           homeserver: .mockMatrixDotOrg,
                                                           keyBackupNeeded: true,
                                                           password: "12345678")
-        case .ssoOnly:
-            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
-                                                          homeserver: .mockEnterpriseSSO,
-                                                          keyBackupNeeded: true)
-        case .noSSO:
-            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
-                                                          homeserver: .mockBasicServer,
-                                                          keyBackupNeeded: true)
-        case .fallback:
-            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
-                                                          homeserver: .mockFallback,
-                                                          keyBackupNeeded: true)
-        case .noKeyBackup:
-            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
-                                                          homeserver: .mockFallback,
-                                                          keyBackupNeeded: false)
+//        case .ssoOnly:
+//            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
+//                                                          homeserver: .mockEnterpriseSSO,
+//                                                          keyBackupNeeded: true)
+//        case .noSSO:
+//            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
+//                                                          homeserver: .mockBasicServer,
+//                                                          keyBackupNeeded: true)
+//        case .fallback:
+//            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
+//                                                          homeserver: .mockFallback,
+//                                                          keyBackupNeeded: true)
+//        case .noKeyBackup:
+//            viewModel = AuthenticationSoftLogoutViewModel(credentials: credentials,
+//                                                          homeserver: .mockFallback,
+//                                                          keyBackupNeeded: false)
         }
         
         // can simulate service and viewModel actions here if needs be.

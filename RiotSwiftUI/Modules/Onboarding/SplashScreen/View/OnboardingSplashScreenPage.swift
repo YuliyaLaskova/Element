@@ -38,6 +38,7 @@ struct OnboardingSplashScreenPage: View {
                 .frame(maxWidth: 310) // This value is problematic. 300 results in dropped frames
                 // on iPhone 12/13 Mini. 305 the same on iPhone 12/13. As of
                 // iOS 15, 310 seems fine on all supported screen widths 🤞.
+                .overlay(Circle().stroke(theme.colors.accent, lineWidth: 6))
                 .clipShape(Circle())
                 .padding(20)
                 .accessibilityHidden(true)

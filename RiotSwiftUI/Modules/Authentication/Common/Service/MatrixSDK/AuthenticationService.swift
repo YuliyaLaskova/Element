@@ -150,18 +150,7 @@ class AuthenticationService: NSObject {
         let loginWizard = LoginWizard(client: client, sessionCreator: sessionCreator)
         self.loginWizard = loginWizard
         
-        if flow == .register {
-            do {
-                let registrationWizard = RegistrationWizard(client: client, sessionCreator: sessionCreator)
-                homeserver.registrationFlow = try await registrationWizard.registrationFlow()
-                self.registrationWizard = registrationWizard
-            } catch {
-                guard homeserver.preferredLoginMode.hasSSO, error as? RegistrationError == .registrationDisabled else {
-                    throw error
-                }
-                // Continue without throwing when registration is disabled but SSO is available.
-            }
-        }
+        // julia убран функционал регистрации
         
         // The state and client are set after trying the registration flow to
         // ensure the existing state isn't wiped out when an error occurs.
@@ -292,7 +281,6 @@ class AuthenticationService: NSObject {
         
         let identityProviders = loginFlowResponse.flows?.compactMap { $0 as? MXLoginSSOFlow }.first?.identityProviders ?? []
         return LoginFlowResult(supportedLoginTypes: loginFlowResponse.flows?.compactMap { $0 } ?? [],
-                               ssoIdentityProviders: identityProviders.sorted { $0.name < $1.name }.map(\.ssoIdentityProvider),
                                homeserverAddress: client.homeserver)
     }
     

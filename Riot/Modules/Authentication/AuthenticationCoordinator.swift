@@ -313,8 +313,8 @@ final class AuthenticationCoordinator: NSObject, AuthenticationCoordinatorProtoc
                 self.onSessionCreated(session: session, flow: .login)
             case .clearAllData:
                 self.callback?(.clearAllData)
-            case .continueWithSSO(let provider):
-                self.presentSSOAuthentication(for: provider)
+//            case .continueWithSSO(let provider):
+//                self.presentSSOAuthentication(for: provider)
             case .fallback:
                 self.showFallback(for: .login, deviceId: softLogoutCredentials.deviceId)
             }
@@ -330,8 +330,8 @@ final class AuthenticationCoordinator: NSObject, AuthenticationCoordinatorProtoc
     @MainActor private func loginCoordinator(_ coordinator: AuthenticationLoginCoordinator,
                                              didCallbackWith result: AuthenticationLoginCoordinatorResult) {
         switch result {
-        case .continueWithSSO(let provider):
-            presentSSOAuthentication(for: provider)
+//        case .continueWithSSO(let provider):
+//            presentSSOAuthentication(for: provider)
         case .success(let session, let loginPassword):
             password = loginPassword
             authenticationType = .password
@@ -376,8 +376,8 @@ final class AuthenticationCoordinator: NSObject, AuthenticationCoordinatorProtoc
     @MainActor private func registrationCoordinator(_ coordinator: AuthenticationRegistrationCoordinator,
                                                     didCallbackWith result: AuthenticationRegistrationCoordinatorResult) {
         switch result {
-        case .continueWithSSO(let provider):
-            presentSSOAuthentication(for: provider)
+//        case .continueWithSSO(let provider):
+//            presentSSOAuthentication(for: provider)
         case .completed(let result, let registerPassword):
             password = registerPassword
             authenticationType = .password

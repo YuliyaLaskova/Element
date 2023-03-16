@@ -51,6 +51,7 @@ struct AuthenticationServerInfoSection: View {
                 Button(action: editAction) {
                     Text(VectorL10n.edit)
                         .font(theme.fonts.body)
+                        .foregroundColor(theme.colors.accent)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
                         .overlay(RoundedRectangle(cornerRadius: 8).stroke(theme.colors.accent))

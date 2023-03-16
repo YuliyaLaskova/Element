@@ -26,7 +26,7 @@ enum AuthenticationRegistrationViewModelResult: CustomStringConvertible {
     /// Create an account using the supplied credentials.
     case createAccount(username: String, password: String)
     /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
+//    case continueWithSSO(SSOIdentityProvider)
     /// Continue using a fallback
     case fallback
     
@@ -39,8 +39,8 @@ enum AuthenticationRegistrationViewModelResult: CustomStringConvertible {
             return "validateUsername"
         case .createAccount:
             return "createAccount"
-        case .continueWithSSO(let provider):
-            return "continueWithSSO: \(provider)"
+//        case .continueWithSSO(let provider):
+//            return "continueWithSSO: \(provider)"
         case .fallback:
             return "fallback"
         }
@@ -93,10 +93,10 @@ struct AuthenticationRegistrationViewState: BindableState {
     }
     
     /// Whether to show any SSO buttons.
-    var showSSOButtons: Bool {
-        !homeserver.ssoIdentityProviders.isEmpty
-    }
-    
+//    var showSSOButtons: Bool {
+//        !homeserver.ssoIdentityProviders.isEmpty
+//    }
+//
     /// Whether the current `username` is invalid.
     var isUsernameInvalid: Bool {
         if case .invalid = usernameAvailability {
@@ -142,8 +142,6 @@ enum AuthenticationRegistrationViewAction {
     case resetUsernameAvailability
     /// Continue using the input username and password.
     case next
-    /// Continue using the supplied SSO provider.
-    case continueWithSSO(SSOIdentityProvider)
     /// Continue using the fallback page
     case fallback
 }
